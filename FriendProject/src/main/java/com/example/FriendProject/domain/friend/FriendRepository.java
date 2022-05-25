@@ -16,7 +16,6 @@ public class FriendRepository {
 
     @Transactional
     public void create(Friend friend){
-
         fr.persist(friend);
     }
 
@@ -28,6 +27,7 @@ public class FriendRepository {
     public Friend findById(long friendId){
         return fr.find(Friend.class,friendId);
     }
+
     public List<Friend> getAll(){
         return fr.createQuery("Select friend from Friend friend", Friend.class).getResultList();
     }

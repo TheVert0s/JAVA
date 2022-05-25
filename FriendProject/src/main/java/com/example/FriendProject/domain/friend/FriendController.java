@@ -1,6 +1,5 @@
 package com.example.FriendProject.domain.friend;
 
-import com.fasterxml.jackson.datatype.jsr310.deser.InstantDeserializer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,9 +9,12 @@ import java.util.List;
 @RequestMapping("/api")
 @CrossOrigin("http://localhost:3000")
 public class FriendController {
+    private final FriendService friendService;
 
     @Autowired
-    FriendService friendService;
+    public FriendController(FriendService friendService) {
+        this.friendService = friendService;
+    }
 
     @GetMapping("/friends")
     public List<Friend> friends()
